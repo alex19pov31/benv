@@ -1,0 +1,4 @@
+include fastcgi_params;
+fastcgi_param SCRIPT_FILENAME $document_root/bitrix/urlrewrite.php;
+fastcgi_param   SERVER_NAME   $host;
+fastcgi_param   HTTP_ORIGIN   $host;

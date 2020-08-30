@@ -1,0 +1,39 @@
+    root   /home/www/bitrix/$host;
+    index  index.php index.html;
+    #access_log  /home/www/bitrix/$host.access.log;
+    #error_log   /home/www/bitrix/$host.error.log;
+    autoindex off;
+
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host:80;
+    client_max_body_size 1024M; #максимальный размер передаваемого файла
+    client_body_buffer_size 4M;
+
+#    auth_basic              "closed site";
+#    auth_basic_user_file    /etc/nginx/conf.d/passwd;
+
+    location /api {
+        try_files $uri $uri/ /api/index.php?$query_string;
+    }
+
+    location / {
+        try_files  $uri $uri/ @bitrix;
+    }
+
+    location ~* ^.+\.(jpg|jpeg|gif|png|svg|js|css|mp3|ogg|mpe?g|avi|zip|gz|bz2?|rar|swf)$ {
+        access_log        off;
+        expires           max;
+    }
+
+    location ~ (/\.ht|/bitrix/modules|/upload/support/not_image) {
+        deny all;
+    }
+
+    location ~ /.svn/ {
+           deny all;
+    }
+
+    location ~ /.git/ {
+           deny all;
+    }
