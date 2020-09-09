@@ -28,6 +28,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
@@ -48,6 +49,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
@@ -68,6 +70,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
@@ -88,6 +91,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
@@ -108,6 +112,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom_php8.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
@@ -128,6 +133,7 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
+      - tmp:/root/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
