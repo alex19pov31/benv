@@ -20,6 +20,8 @@ services:
     container_name: 'bitrix_php71'
     image: alex19pov31/bitrix-php71-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -28,19 +30,22 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.4
-    read_only: true
+    read_only: false
   bitrix_php72-fpm:
     container_name: 'bitrix_php72'
     image: alex19pov31/bitrix-php72-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -49,19 +54,22 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.5
-    read_only: true
+    read_only: false
   bitrix_php73-fpm:
     container_name: 'bitrix_php73'
     image: alex19pov31/bitrix-php73-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -70,11 +78,12 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.6
@@ -83,6 +92,8 @@ services:
     container_name: 'bitrix_php74'
     image: alex19pov31/bitrix-php74-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -91,11 +102,12 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.7
@@ -104,6 +116,8 @@ services:
     container_name: 'bitrix_php8'
     image: alex19pov31/bitrix-php8-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -112,11 +126,12 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom_php8.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.8
@@ -125,6 +140,8 @@ services:
     container_name: 'bitrix_php56'
     image: alex19pov31/bitrix-php56-fpm
     working_dir: /home/www/
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     links:
       - bitrix_mysql
       - bitrix_memcached
@@ -133,11 +150,12 @@ services:
     volumes:
       - pid:/var/run
       - tmp:/tmp
-      - tmp:/root/.composer/cache:rw
+      - tmp:$HOME/.composer/cache:rw
       - ../:/home/www/bitrix:rw
       - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/z-custom.ini:ro
       - ./.docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php/msmtprc:/etc/msmtprc
+      - $SSH_AUTH_SOCK:/ssh-agent
     networks:
       vpcbr:
         ipv4_address: 10.5.0.9
@@ -161,6 +179,8 @@ services:
       - bitrix_php56-fpm
     ports:
       - "80:80"
+      - "8081:8081"
+      - "8082:8082"
       - "443:443"
     volumes:
       - tmp:/var/cache/nginx:rw
@@ -182,6 +202,7 @@ services:
         ipv4_address: 10.5.0.11
     read_only: true
 volumes:
+  composer-data:
   db-data:
   tmp:
   pid:
