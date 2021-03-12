@@ -18,7 +18,8 @@ services:
     read_only: true
   bitrix_php71-fpm:
     container_name: 'bitrix_php71'
-    image: alex19pov31/bitrix-php71-fpm
+    user: "1000:1000"
+    image: alex19pov31/bitrix-php71-fpm-ext
     working_dir: /home/www/
     environment:
       - SSH_AUTH_SOCK=/ssh-agent
@@ -43,6 +44,7 @@ services:
   bitrix_php72-fpm:
     container_name: 'bitrix_php72'
     image: alex19pov31/bitrix-php72-fpm
+    user: "1000:1000"
     working_dir: /home/www/
     environment:
       - SSH_AUTH_SOCK=/ssh-agent
@@ -66,6 +68,7 @@ services:
     read_only: true
   bitrix_php73-fpm:
     container_name: 'bitrix_php73'
+    user: "1000:1000"
     image: alex19pov31/bitrix-php73-fpm
     working_dir: /home/www/
     environment:
@@ -90,6 +93,7 @@ services:
     read_only: true
   bitrix_php74-fpm:
     container_name: 'bitrix_php74'
+    user: "1000:1000"
     image: alex19pov31/bitrix-php74-fpm
     working_dir: /home/www/
     environment:
@@ -114,6 +118,7 @@ services:
     read_only: true
   bitrix_php8-fpm:
     container_name: 'bitrix_php8'
+    user: "1000:1000"
     image: alex19pov31/bitrix-php8-fpm
     working_dir: /home/www/
     environment:
@@ -138,6 +143,7 @@ services:
     read_only: true
   bitrix_php56-fpm:
     container_name: 'bitrix_php56'
+    user: "1000:1000"
     image: alex19pov31/bitrix-php56-fpm
     working_dir: /home/www/
     environment:
