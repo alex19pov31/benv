@@ -1,4 +1,4 @@
-    root   /home/www/bitrix/$host;
+    root   /home/www/bitrix/$file_path;
     index  index.php index.html;
     #access_log  /home/www/bitrix/$host.access.log;
     #error_log   /home/www/bitrix/$host.error.log;
