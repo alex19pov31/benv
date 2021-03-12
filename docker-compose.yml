@@ -63,7 +63,7 @@ services:
     networks:
       vpcbr:
         ipv4_address: 10.5.0.5
-    read_only: false
+    read_only: true
   bitrix_php73-fpm:
     container_name: 'bitrix_php73'
     image: alex19pov31/bitrix-php73-fpm
